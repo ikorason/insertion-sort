@@ -2,14 +2,14 @@
 #include <list>
 #include <chrono>
 
-// if you run the program with 'g++ -std=c++11 main.cpp -o main' on your terminal or any other way
+// if you run the program with 'g++ -std=c++11 main.cpp -o main' on your terminal or any other way with new c++ edition
 // there will be series of printing happening
 // 1: test the result and the function of insertion sort are working (both stl version and normal)
 // 2: timing test for both the stl version and the normal with 4 types of experiement
 
 // insertion sort using standard libraries, just to make comparison
 template<typename Iter, typename Comparator>
-void insertionSortSTL(const Iter begin, const Iter end, Comparator compare) {
+void insertionSortSTL(Iter begin, Iter end, Comparator compare) {
     for (auto iter = begin; iter != end; iter++) {
         auto const insertion = std::upper_bound(begin, iter, *iter, compare);
         std::rotate(insertion, iter, std::next(iter));
@@ -17,7 +17,7 @@ void insertionSortSTL(const Iter begin, const Iter end, Comparator compare) {
 }
 
 template<typename Iter, typename Comparator>
-void insertionSort(const Iter begin, const Iter end, Comparator compare) {
+void insertionSort(Iter begin, Iter end, Comparator compare) {
     // if the container is empty
     if (begin == end) {
         return;
