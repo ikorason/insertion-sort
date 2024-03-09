@@ -2,6 +2,12 @@
 #include <list>
 #include <chrono>
 
+// if you run the program with 'g++ -std=c++11 main.cpp -o main' on your terminal or any other way
+// there will be series of printing happening
+// 1: test the result and the function of insertion sort are working (both stl version and normal)
+// 2: timing test for both the stl version and the normal with 4 types of experiement
+
+// insertion sort using standard libraries, just to make comparison
 template<typename Iter, typename Comparator>
 void insertionSortSTL(const Iter begin, const Iter end, Comparator compare) {
     for (auto iter = begin; iter != end; iter++) {
@@ -17,8 +23,10 @@ void insertionSort(const Iter begin, const Iter end, Comparator compare) {
         return;
     }
 
+    // loop through the list
     for (Iter j = begin; j != end; j++) {
-        auto key = std::move(*j); // move the value to be inserted
+        // move the value to be inserted
+        auto key = std::move(*j); 
         Iter i = j;
         while (i != begin && compare(key, *(std::prev(i)))) {
             *i = std::move(*(std::prev(i)));
