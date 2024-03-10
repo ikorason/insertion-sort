@@ -7,6 +7,16 @@
 // 1: test the result and the function of insertion sort are working (both stl version and normal)
 // 2: timing test for both the stl version and the normal with 4 types of experiement
 
+// helper function to print list
+template<typename Iter>
+void print(const Iter& begin, const Iter& end, bool new_line = true)
+{
+    std::for_each(begin, end, [](auto& i) { std::cout << i << " "; });
+    if (new_line) {
+        std::cout << std::endl;
+    }
+}
+
 // insertion sort using standard libraries, just to make comparison
 template<typename Iter, typename Comparator>
 void insertionSortSTL(Iter begin, Iter end, Comparator compare) {
@@ -37,34 +47,25 @@ void insertionSort(Iter begin, Iter end, Comparator compare) {
     }
 }
 
-// helper function to print list
-template<typename Container>
-void printList(Container& container) {
-    for (const auto& element : container) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-}
-
 // test sort results
 template<typename Comparator>
 void testSortedResultSTL(Comparator compare) {
     std::list<int> l = {5,2,1,8,9,3};
     std::cout << "Before sort: ";
-    printList(l);
+    print(l.begin(), l.end());
     insertionSortSTL(l.begin(), l.end(), compare);
     std::cout << "After sort: ";
-    printList(l);
+    print(l.begin(), l.end());
 }
 
 template<typename Comparator>
 void testSortedResult(Comparator compare) {
     std::list<int> l = {5,2,1,8,9,3};
     std::cout << "Before sort: ";
-    printList(l);
+    print(l.begin(), l.end());
     insertionSort(l.begin(), l.end(), compare);
     std::cout << "After sort: ";
-    printList(l);
+    print(l.begin(), l.end());
 }
 
 
@@ -171,6 +172,9 @@ void testAllDuplicates() {
 }
 
 int main() {
+    // test result
+    std::cout << "Test Result: " << std::endl;
+
     std::cout << "Type -> insertionSortSTL -> Ascending Order:\n";
     testSortedResultSTL(std::less<int>());
 
