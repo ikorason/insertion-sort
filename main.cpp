@@ -2,10 +2,13 @@
 #include <list>
 #include <chrono>
 
-// if you run the program with 'g++ -std=c++11 main.cpp -o main' on your terminal or any other way with new c++ edition
-// there will be series of printing happening
 // 1: test the result and the function of insertion sort are working (both stl version and normal)
 // 2: timing test for both the stl version and the normal with 4 types of experiement
+
+// timing test resuults summary
+// sorted order and all duplicate elements will be the fastest, then its random. reverse sorted order is the slowest
+// also `insertionSortSTL` using the std library, all the other tests are similar, but found that `sorted order` takes a bit longer than others
+// I think its because of the inner working functionlaity of the `upper_bound` and `rotate` function
 
 // helper function to print list
 template<typename Iter>
